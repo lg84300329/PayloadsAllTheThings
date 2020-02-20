@@ -1,4 +1,4 @@
-# File Inclusion
+# 文件包含
 
 > The File Inclusion vulnerability allows an attacker to include a file, usually exploiting a "dynamic file inclusion" mechanisms implemented in the target application.
 
