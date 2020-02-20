@@ -1,20 +1,20 @@
-# CORS Misconfiguration
+# CORS Misconfiguration(误配置)
 
-> A site-wide CORS misconfiguration was in place for an API domain. This allowed an attacker to make cross origin requests on behalf of the user as the application did not whitelist the Origin header and had Access-Control-Allow-Credentials: true meaning we could make requests from our attacker’s site using the victim’s credentials. 
+> CORS配置错误出现在API上。这允许攻击者代表用户发出跨源请求，因为应用程序没有白名单源头，并且具有访问控制允许凭据：这意味着我们可以使用受害者的凭据从攻击者的站点发出请求
 
-## Summary
+## 概要
 
-* [Prerequisites](#prerequisites)
+* [前提](#前提)
 * [Exploitation](#exploitation)
 * [References](#references)
 
-## Prerequisites
+## 前提
 
 * BURP HEADER> `Origin: https://evil.com`
 * VICTIM HEADER> `Access-Control-Allow-Credential: true`
 * VICTIM HEADER> `Access-Control-Allow-Origin: https://evil.com`
 
-## Exploitation
+## 漏洞利用
 
 Usually you want to target an API endpoint. Use the following payload to exploit a CORS misconfiguration on target **https://victim.example.com/endpoint**.
 
