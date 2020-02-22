@@ -20,8 +20,8 @@
    * [使用变量表达式](#使用变量表达式)
    * [使用通配符](#使用通配符)
 * [Challenge](#challenge)
-* [Time based data exfiltration](#time-based-data-exfiltration)
-* [DNS based data exfiltration](#dns-based-data-exfiltration)
+* [基于时间的数据渗透](#基于时间的数据渗透)
+* [基于DNS的数据渗透](#基于DNS的数据渗透)
 * [Polyglot command injection](#polyglot-command-injection)
 * [References](#references)
     
@@ -164,7 +164,7 @@ Challenge based on the previous tricks, what does the following command do:
 g="/e"\h"hh"/hm"t"c/\i"sh"hh/hmsu\e;tac$@<${g//hh??hm/}
 ```
 
-## Time based data exfiltration
+## 基于时间的数据渗透
 
 Extracting data : char by char
 
@@ -180,7 +180,7 @@ user    0m0.000s
 sys 0m0.000s
 ```
 
-## DNS based data exfiltration
+## 基于DNS的数据渗透
 
 Based on the tool from `https://github.com/HoLyVieR/dnsbin` also hosted at dnsbin.zhack.ca
 
