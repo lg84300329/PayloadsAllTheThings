@@ -1,10 +1,9 @@
 # CRLF
-
->The term CRLF refers to Carriage Return (ASCII 13, \r) Line Feed (ASCII 10, \n). They're used to note the termination of a line, however, dealt with differently in today’s popular Operating Systems. For example: in Windows both a CR and LF are required to note the end of a line, whereas in Linux/UNIX a LF is only required. In the HTTP protocol, the CR-LF sequence is always used to terminate a line.
-
+> 术语CRLF关联回车(ASCII 13, \r)换行(ASCII 10, \n).它们通常用来说明一行的结束。然而，不同的操作系统处理不一样。比如，在windows中CR和LF都需要来表示一行的结束，而在Linux和Unix中只需要LR.在Http协议中，CR-LF序列用来表示一行的结束。
 >A CRLF Injection attack occurs when a user manages to submit a CRLF into an application. This is most commonly done by modifying an HTTP parameter or URL.
+> CRLF注入攻击发生在用用户提交一个CRLF到应用中，通常通过修改http参数或者URL
 
-## Summary
+## 概要
 
 - [CRLF - Add a cookie](#crlf---add-a-cookie)
 - [CRLF - Add a cookie - XSS Bypass](#crlf---add-a-cookie---xss-bypass)
