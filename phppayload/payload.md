@@ -3,6 +3,9 @@
 * [strcmp](#strcmp)
 * [md5](#md5)
 * [json_decode](#json_decode)
+* [==&===](#==&===)
+* [switch](#switch)
+* [数字比较](#数字比较)
 ### isNumber
 is_numeric()判断是否为数字，因为PHP的弱类型，将数字后面加上空格或者任意一个字符即可绕过.
 payload:
@@ -62,4 +65,51 @@ if (isset($_POST['a'])) {
      echo "a不存在";
  }
 a={"key":0}
+```
+### ==&===
+“==”是判断数值是否相等，如果类型不同的进行比较，其会将类型转换成相同的再进行比较.“===”则是判断数值和类型是否相等.
+当一个字符串欸当作一个数值来取值，其结果和类型如下:
+如果该字符串没有包含'.'，'e'，'E'并且其数值值在整形的范围之内，该字符串被当作int来取值，其他所有情况下都被作为float来取值，该字符串的开始部分决定了它的值
+如果该字符串以合法的数值开始，则使用该数值，否则其值为0
+payload:
+```
+<?php  
+var_dump("admin" ==0);"admin"转换成0
+var_dump("1admin" ==1);"1admin"转成成1
+var_dump("2admin" ==2);"2admin"转成成2
+var_dump("admin1" ==1);"admin1"转换成0
+var_dump("admin1" ==0);
+var_dump("0e123456" =="0e4456789");//e是科学计数法。0exx=0*10的n次方
+?>
+#bool(true)
+bool(true)
+bool(true)
+bool(false)
+bool(true)
+bool(true)
+```
+### switch
+原理同==
+payload:
+```
+```
+### 数字比较
+绕过常规数字校验，使用16进制。0x
+payload:
+```
+$one=ord('1');
+$nigth=ord('9');
+$number='2223454235232546';
+for(i=0;i<strlen($number);++i){
+$digit=ord(tmp[i]);
+if($digit>=$one&&$digit<=$night){
+return "false";
+}
+if($number==$temp){
+echo "flag";
+}
+}
+
+
+
 ```
