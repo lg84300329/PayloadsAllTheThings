@@ -114,7 +114,7 @@ echo "flag";
 
 
 ```
-### $GLOBALS($$) 引用全局作用域中可用的全部变
+### $GLOBALS($$) 引用全局作用域中可用的全部变量
 ```
 <?php
 include "flag.php";
