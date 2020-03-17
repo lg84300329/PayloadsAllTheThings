@@ -7,6 +7,7 @@
 * [switch](#switch)
 * [数字比较](#数字比较)
 * [GLOBALS($$) 引用全局作用域中可用的全部变量](#GLOBALS($$) 引用全局作用域中可用的全部变量)
+* [[_FILES]](#[_FILES])
 ### isNumber
 is_numeric()判断是否为数字，因为PHP的弱类型，将数字后面加上空格或者任意一个字符即可绕过.
 payload:
@@ -128,3 +129,8 @@ show_source(__FILE__);
 ```
 - 看到了$$a,可能是用超全局变量GLOBALS，于是post一个参数hello=GLOBALS，果然：
 ```
+### [_FILES] 
+include "flag.php";
+$a = @$_REQUEST['hello'];
+eval( "var_dump($a);");
+show_source(__FILE__);
